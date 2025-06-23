@@ -45,14 +45,15 @@ class PassService:
         add_time = datetime.datetime.strptime(pass_data.get("add_time"), "%Y-%m-%d %H:%M:%S")
 
         query = passes.insert().values(
+            status = pass_data.get("status"),
             beauty_title=pass_data.get("beauty_title"),
             title=pass_data.get("title"),
             other_titles=pass_data.get("other_titles"),
             connect=pass_data.get("connect"),
             add_time=add_time,
-            latitude=float(coords.get("latitude")),
-            longitude=float(coords.get("longitude")),
-            height=float(coords.get("height")),
+            latitude=coords.get("latitude"),
+            longitude=coords.get("longitude"),
+            height=coords.get("height"),
             level_winter=level.get("winter"),
             level_summer=level.get("summer"),
             level_autumn=level.get("autumn"),
