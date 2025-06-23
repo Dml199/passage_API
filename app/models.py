@@ -1,5 +1,5 @@
 from sqlalchemy import (
-    Table, Column, Integer, String, ForeignKey, DateTime, MetaData, Text
+    Table, Column, Integer, String, ForeignKey, DateTime, MetaData, Text, Enum
 )
 import datetime
 
@@ -17,7 +17,7 @@ users = Table(
 
 passes = Table(
     "passes", metadata,
-    Column("status",String),
+    Column("status",Enum("new","pending","accepted","rejected",name = "status")),
     Column("id", Integer, primary_key=True),
     Column("beauty_title", String),
     Column("title", String),
